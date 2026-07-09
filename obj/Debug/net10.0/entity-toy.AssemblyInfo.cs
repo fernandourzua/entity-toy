@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("entity-toy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc7b0023bbd1327396152418a1975963574fe161")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f4ed2859d11b3ca963deab5ccfd0ede758ba241")]
 [assembly: System.Reflection.AssemblyProductAttribute("entity-toy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("entity-toy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
