@@ -1,0 +1,14 @@
+/Users/tumac.cl/Codes/Migraciones/entity-toy/bin/Debug/net10.0/entity-toy.deps.json
+/Users/tumac.cl/Codes/Migraciones/entity-toy/bin/Debug/net10.0/entity-toy.runtimeconfig.json
+/Users/tumac.cl/Codes/Migraciones/entity-toy/bin/Debug/net10.0/entity-toy.dll
+/Users/tumac.cl/Codes/Migraciones/entity-toy/bin/Debug/net10.0/entity-toy.pdb
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.csproj.AssemblyReference.cache
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.AssemblyInfoInputs.cache
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.AssemblyInfo.cs
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.csproj.CoreCompileInputs.cache
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.dll
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/refint/entity-toy.dll
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.pdb
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/entity-toy.genruntimeconfig.cache
+/Users/tumac.cl/Codes/Migraciones/entity-toy/obj/Debug/net10.0/ref/entity-toy.dll
