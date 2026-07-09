@@ -26,6 +26,7 @@ public class ToyDbContext : DbContext
             entity.Property(e => e.Username).HasMaxLength(50).IsRequired();
             entity.Property(e => e.Email).HasMaxLength(100).IsRequired();
             entity.HasIndex(e => e.Email).IsUnique(); // Email must be unique
+            entity.Property(e => e.PhoneNumber).HasMaxLength(20);
         });
 
         // 2. Project Configuration
