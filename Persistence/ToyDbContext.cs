@@ -35,7 +35,7 @@ public class ToyDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
             entity.Property(e => e.Description).HasMaxLength(500);
-            entity.Property(e => e.Status).HasMaxLength(30); // Configuración del nuevo atributo
+            entity.Property(e => e.Status).HasMaxLength(30);
 
             // One-to-Many Relationship (User -> Projects)
             entity.HasOne(p => p.User)
@@ -50,6 +50,7 @@ public class ToyDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Title).HasMaxLength(150).IsRequired();
             entity.Property(e => e.IsCompleted).HasDefaultValue(false);
+            entity.Property(e => e.DueDate); // Configuración del nuevo atributo DueDate
 
             // One-to-Many Relationship (Project -> Tasks)
             entity.HasOne(t => t.Project)
