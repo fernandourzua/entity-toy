@@ -1,0 +1,19 @@
+name: Trigger Orchestrator Build
+
+on:
+  push:
+    paths:
+      - 'Migrations/**'  # activate only if there are changes in migrations
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Repository Dispatch to Orchestrator
+        run: |
+          # notify orchestrator of new migration
+          curl -H "Authorization: token ${{ secrets.ORCHESTRATOR_TRIGGER_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               -X POST \
+               -d '{"event_type": "new-migration"}' \
+               https://api.github.com/repos/fernandourzua/orquestador-migraciones/dispatches
