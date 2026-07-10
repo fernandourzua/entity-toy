@@ -35,6 +35,7 @@ public class ToyDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
             entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.Status).HasMaxLength(30); // Configuración del nuevo atributo
 
             // One-to-Many Relationship (User -> Projects)
             entity.HasOne(p => p.User)
