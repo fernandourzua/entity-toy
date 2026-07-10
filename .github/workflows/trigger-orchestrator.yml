@@ -16,4 +16,4 @@ jobs:
                -H "Accept: application/vnd.github.v3+json" \
                -X POST \
                -d '{"event_type": "new-migration"}' \
-               https://api.github.com/repos/fernandourzua/orquestador-migraciones/dispatches
+               https://api.github.com/repos/fernandourzua/migraciones-test/dispatches
