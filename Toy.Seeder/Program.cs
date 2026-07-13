@@ -1,10 +1,26 @@
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using entity_toy.Persistence;
 using entity_toy.Entities;
 
 namespace Toy.Seeder;
+
+// Generic helper extensions to eliminate seeder boilerplate code
+public static class EFExtensions
+{
+    public static T AddOrUpdate<T>(this DbSet<T> dbSet, Expression<Func<T, bool>> predicate, T entity) where T : class
+    {
+        var existing = dbSet.FirstOrDefault(predicate);
+        if (existing == null)
+        {
+            dbSet.Add(entity);
+            return entity;
+        }
+        return existing;
+    }
+}
 
 class Program
 {
@@ -30,7 +46,7 @@ class Program
 
         if (string.IsNullOrEmpty(connectionString))
         {
-            Console.Error.WriteLine("[Toy-Seeder] ERROR: No connection string provided. Use --connection or set TOY_DB_CONNECTION_STRING.");
+            Console.Error.WriteLine("[Toy-Seeder] ERROR: No connection string provided.");
             return 1;
         }
 
@@ -44,66 +60,48 @@ class Program
 
         try
         {
-            // 3. Build DbContext options
+            // 3. Initialize Database Context
             var optionsBuilder = new DbContextOptionsBuilder<ToyDbContext>();
             optionsBuilder.UseSqlServer(connectionString);
 
             using var context = new ToyDbContext(optionsBuilder.Options);
 
-            // Ensure database is accessible and has migrations applied (optional sanity check)
             if (!context.Database.CanConnect())
             {
                 Console.Error.WriteLine("[Toy-Seeder] ERROR: Cannot connect to the target database.");
                 return 3;
             }
 
-            // 4. Seeding Logic (Idempotent: Check before insert)
+            // 4. Declarative Seeding Logic (Cero Boilerplate)
             
-            // A. Seed default user if not exists (User with Id=1 is already seeded by EF HasData,
-            // but let's seed a dynamic test user with Id=2 for testing).
-            var testUser = context.Users.FirstOrDefault(u => u.Username == "testuser");
-            if (testUser == null)
+            // A. Seed test user
+            var testUser = context.Users.AddOrUpdate(u => u.Username == "testuser", new User
             {
-                Console.WriteLine("[Toy-Seeder] Seeding test user...");
-                testUser = new User
-                {
-                    Username = "testuser",
-                    Email = "testuser@example.com",
-                    PhoneNumber = "999888777"
-                };
-                context.Users.Add(testUser);
-                context.SaveChanges(); // Save to get the generated Id if it's identity
-            }
+                Username = "testuser",
+                Email = "testuser@example.com",
+                PhoneNumber = "999888777"
+            });
 
-            // B. Seed default project if not exists
-            var testProject = context.Projects.FirstOrDefault(p => p.Name == "Project Alpha");
-            if (testProject == null)
+            // B. Seed default project
+            var testProject = context.Projects.AddOrUpdate(p => p.Name == "Project Alpha", new Project
             {
-                Console.WriteLine("[Toy-Seeder] Seeding default project Alpha...");
-                testProject = new Project
-                {
-                    Name = "Project Alpha",
-                    Description = "Seeded by Toy.Seeder console application.",
-                    Status = "Active",
-                    User = testUser // Association
-                };
-                context.Projects.Add(testProject);
-                context.SaveChanges();
-            }
+                Name = "Project Alpha",
+                Description = "Seeded by Toy.Seeder console application.",
+                Status = "Active",
+                User = testUser // Auto-associates relationship in memory
+            });
 
-            // C. Seed default tasks if not exists
-            if (!context.Tasks.Any(t => t.Project.Id == testProject.Id))
+            // C. Seed default task
+            context.Tasks.AddOrUpdate(t => t.Title == "Task seeded automatically by C# Seeder" && t.Project.Id == testProject.Id, new TaskItem
             {
-                Console.WriteLine("[Toy-Seeder] Seeding default tasks for Project Alpha...");
-                context.Tasks.Add(new TaskItem
-                {
-                    Title = "Task seeded automatically by C# Seeder",
-                    IsCompleted = false,
-                    DueDate = DateTime.Now.AddDays(7),
-                    Project = testProject
-                });
-                context.SaveChanges();
-            }
+                Title = "Task seeded automatically by C# Seeder",
+                IsCompleted = false,
+                DueDate = DateTime.Now.AddDays(7),
+                Project = testProject
+            });
+
+            // 5. Commit all insertions to the Database
+            context.SaveChanges();
 
             Console.WriteLine("[Toy-Seeder] C# Seeding completed successfully.");
             return 0;
