@@ -118,7 +118,7 @@ class Program
         }
         catch (Exception ex)
         {
-            Console.Error.WriteLine($"[Toy-Seeder] EXCEPTION OCCURRED: {ex.Message}");
+            Console.Error.WriteLine($"[Toy-Seeder] EXCEPTION  OCCURRED: {ex.Message}");
             Console.Error.WriteLine(ex.StackTrace);
             return 99;
         }
