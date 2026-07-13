@@ -3,17 +3,18 @@ name: Trigger Orchestrator Build
 on:
   push:
     paths:
-      - 'Migrations/**'  # activate if migrations changes 
-      - 'Toy.Seeder/**'  # activate if seeders change
+      - 'Migrations/**'  # Se activa si cambian las migraciones
+      - 'Toy.Seeder/**'  # Se activa si cambia el código del seeder en C#
 
 jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Repository Dispatch to Orchestrator
+      - name: Send Workflow Dispatch to Orchestrator
         run: |
+        # call dispatcher
           curl -H "Authorization: token ${{ secrets.ORCHESTRATOR_TRIGGER_TOKEN }}" \
                -H "Accept: application/vnd.github.v3+json" \
                -X POST \
-               -d '{"event_type": "new-migration"}' \
-               https://api.github.com/repos/fernandourzua/migraciones-test/dispatches
+               -d '{"ref": "no-pci", "inputs": {"network": "nopci"}}' \
+               https://api.github.com/repos/fernandourzua/migraciones-test/actions/workflows/deploy.yml/dispatches
