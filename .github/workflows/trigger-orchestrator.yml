@@ -3,8 +3,8 @@ name: Trigger Orchestrator Build
 on:
   push:
     paths:
-      - 'Migrations/**'  # Se activa si cambian las migraciones
-      - 'Toy.Seeder/**'  # Se activa si cambia el código del seeder en C#
+      - 'Migrations/**'
+      - 'Toy.Seeder/**'
 
 jobs:
   trigger:
