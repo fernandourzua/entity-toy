@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using entity_toy.Persistence;
 
@@ -11,9 +12,11 @@ using entity_toy.Persistence;
 namespace entity_toy.Migrations
 {
     [DbContext(typeof(ToyDbContext))]
-    partial class ToyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260713141049_SeedInitialUser")]
+    partial class SeedInitialUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

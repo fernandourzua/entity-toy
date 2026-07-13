@@ -50,7 +50,7 @@ public class ToyDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Title).HasMaxLength(150).IsRequired();
             entity.Property(e => e.IsCompleted).HasDefaultValue(false);
-            entity.Property(e => e.DueDate); // Configuración del nuevo atributo DueDate
+            entity.Property(e => e.DueDate);
 
             // One-to-Many Relationship (Project -> Tasks)
             entity.HasOne(t => t.Project)
@@ -58,5 +58,16 @@ public class ToyDbContext : DbContext
                   .HasForeignKey(t => t.ProjectId)
                   .OnDelete(DeleteBehavior.Cascade); // Cascade delete tasks if project is deleted
         });
+
+        // 4. Seed Data
+        modelBuilder.Entity<User>().HasData(
+            new User 
+            { 
+                Id = 1, 
+                Username = "admin", 
+                Email = "admin@toy.com", 
+                PhoneNumber = "123456" 
+            }
+        );
     }
 }
