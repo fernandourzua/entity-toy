@@ -100,6 +100,16 @@ class Program
                 Project = testProject
             });
 
+            // C. testy test
+            context.Tasks.AddOrUpdate(t => t.Title == "Task seeded automatically by C# Seeder again" && t.Project.Id == testProject.Id, new TaskItem
+            {
+                Title = "Task seeded automatically by C# Seeder again",
+                IsCompleted = false,
+                DueDate = DateTime.Now.AddDays(7),
+                Project = testProject
+            });
+
+
             // 5. Commit all insertions to the Database
             context.SaveChanges();
 
