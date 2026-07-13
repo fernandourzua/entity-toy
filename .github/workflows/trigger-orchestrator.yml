@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Send Workflow Dispatch to Orchestrator
         run: |
-        # call dispatcher
           curl -H "Authorization: token ${{ secrets.ORCHESTRATOR_TRIGGER_TOKEN }}" \
                -H "Accept: application/vnd.github.v3+json" \
                -X POST \
