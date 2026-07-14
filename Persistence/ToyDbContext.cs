@@ -41,7 +41,7 @@ public class ToyDbContext : DbContext
             entity.HasOne(p => p.User)
                   .WithMany(u => u.Projects)
                   .HasForeignKey(p => p.UserId)
-                  .OnDelete(DeleteBehavior.Cascade); // Cascade delete projects if user is deleted
+                  .OnDelete(DeleteBehavior.Restrict); // Restrict delete projects if user is deleted
         });
 
         // 3. TaskItem Configuration
