@@ -1,0 +1,3 @@
+# Table: Projects; UniqueKeys: Name; Operation: Insert
+Name,Description,Status,UserId__Users__Username
+Project Alpha,Seeded by safe CSV file,Active,testuser

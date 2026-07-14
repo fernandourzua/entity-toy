@@ -1,0 +1,4 @@
+# Table: Users; UniqueKeys: Username; Operation: Insert
+Username,Email,PhoneNumber
+testuser,testuser@example.com,999888777
+admin,admin@toy.com,123456
