@@ -1,21 +1,7 @@
-# Table: Users; UniqueKeys: Username; Operation: Insert
-Username,Email,PhoneNumber
-testuser,testuser@example.com,999888777
-admin,admin@toy.com,123456
-user1,user1@example.com,111222333
-user2,user2@example.com,111222334
-user3,user3@example.com,111222335
-user4,user4@example.com,111222336
-user5,user5@example.com,111222337
-user6,user6@example.com,111222338
-user7,user7@example.com,111222339
-user8,user8@example.com,111222340
-user9,user9@example.com,111222341
-user10,user10@example.com,111222342
-user11,user11@example.com,111222343
-user12,user12@example.com,111222344
-user13,user13@example.com,111222345
-user14,user14@example.com,111222346
-user15,user15@example.com,111222347
-user1,user1_dup@example.com,111222333
-user10,user10_dup@example.com,111222342
+# Table: Users; Operation: Insert
+Id,Username,Email
+3,user3,user3@example.com
+4,user4,user4@example.com
+5,user5,user5@example.com
+6,user6,user6@example.com
+7,user7,user7@example.com

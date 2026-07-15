@@ -1,3 +1,4 @@
-# Table: Projects; UniqueKeys: Name; Operation: Insert
-Name,Description,Status,UserId__Users__Username
-Project Beta,Seeded by safe CSV file,Active,testuser
+# Table: Projects; Operation: Insert
+Id,Name,Description,UserId
+1,Project Alpha,Seeded project,2
+2,Project Beta,Another seeded project,1

@@ -1,5 +1,4 @@
-# Table: Users; UniqueKeys: Username; Operation: Insert
-Username,Email,PhoneNumber
-testuser,testuser@example.com,999888777
-admin,admin@toy.com,123456
-neuser,neuser@toy.com,123457
+# Table: Users; Operation: Insert
+Id,Username,Email
+1,admin,admin@toy.com
+2,testuser,testuser@example.com

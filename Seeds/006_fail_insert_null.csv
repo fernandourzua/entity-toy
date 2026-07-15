@@ -1,3 +1,0 @@
-# Table: Users; UniqueKeys: Username; Operation: Insert
-Username,Email
-,fail_user@example.com

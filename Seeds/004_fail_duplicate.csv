@@ -1,0 +1,4 @@
+# Table: Users; Operation: Insert
+Id,Username,Email
+8,user8,user8@example.com
+3,duplicate_user,dup@example.com

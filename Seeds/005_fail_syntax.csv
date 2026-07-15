@@ -1,0 +1,4 @@
+# Table: Users; Operation: Insert
+Id,Username,Email
+9,user9,user9@example.com
+10,missing_email_value
